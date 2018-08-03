@@ -35,11 +35,9 @@ class AuthScreen extends React.Component<AuthScreenProps, AuthScreenState> {
   };
 
   public render() {
-    let authScreen: React.ReactElement<any>;
+    let authScreen = <Login toggleRegister={this.switchAuthModeHandler} />;
 
-    if (this.state.authMode === 'login') {
-      authScreen = <Login toggleRegister={this.switchAuthModeHandler} />;
-    } else {
+    if (this.state.authMode === 'register') {
       authScreen = <Register toggleLogin={this.switchAuthModeHandler} />;
     }
 
