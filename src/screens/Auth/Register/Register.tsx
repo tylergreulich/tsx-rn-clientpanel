@@ -78,7 +78,13 @@ class Register extends React.Component<RegisterProps, RegisterState> {
   };
 
   public render() {
-    const { email, username, password, confirmPassword, errors } = this.state;
+    const {
+      email,
+      username,
+      password,
+      confirmPassword,
+      errors
+    }: RegisterState = this.state;
 
     return (
       <Container style={styles.authContainer}>
@@ -108,7 +114,7 @@ class Register extends React.Component<RegisterProps, RegisterState> {
             placeholder={
               errors.confirmPassword
                 ? errors.confirmPassword
-                : 'ConfirmPassword'
+                : 'Confirm Password'
             }
             secureTextEntry={true}
             value={confirmPassword}

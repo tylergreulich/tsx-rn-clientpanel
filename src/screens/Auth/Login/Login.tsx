@@ -39,21 +39,18 @@ class Login extends React.Component<LoginProps, LoginState> {
   }
 
   public onLoginHandler = (startMainTabs: any) => {
-    const { email, password } = this.state;
+    const { email, password }: LoginState = this.state;
 
-    const userData = {
-      email,
-      password
-    };
+    const userData = { email, password };
 
     this.props.loginUser(userData, startMainTabs);
   };
 
-  public changeEmailHandler = (value: string) => {
+  public changeEmailHandler = (value: string): void => {
     this.setState({ email: value });
   };
 
-  public changePasswordHandler = (value: string) => {
+  public changePasswordHandler = (value: string): void => {
     this.setState({ password: value });
   };
 

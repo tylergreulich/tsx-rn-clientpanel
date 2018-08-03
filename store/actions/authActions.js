@@ -20,22 +20,11 @@ export const loginUser = userData => dispatch => {
     .then(res => {
       const decoded = jwt_decode(res.data.token);
       dispatch(authSetToken(decoded));
-      AsyncStorage.setItem(decoded);
+      AsyncStorage.setItem('jwtToken', decoded);
       startMainTabs();
     })
     .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }));
 };
-
-// .then(parseRes => alert(parseRes))
-// .then(res => {
-//   alert(res);
-// const { token } = res.data;
-// localStorage.setItem('jwtToken', token);
-// setAuthToken(token);
-// const decoded = jwt_decode(token);
-// dispatch(setCurrentUser(decoded));
-// startMainTabs();
-// });
 
 export const authStoreToken = token => dispatch => {
   // AsyncStorage.setItem('jwtToken', token);
@@ -49,29 +38,29 @@ export const authSetToken = token => {
 };
 
 export const logoutUser = () => dispatch => {
-  localStorage.removeItem('jwtToken');
-  // setAuthToken(false);
+  AsyncStorage.removeItem('jwtToken');
+  setAuthToken(false);
   dispatch(setCurrentUser({}));
 };
 
 export const getAuthToken = () => (dispatch, getState) => {
-  // const promise = new Promise((resolve, reject) => {
-  //   const token = getState().auth.token;
-  //   if (!token) {
-  //     AsyncStorage.getItem('jwtToken')
-  //       .catch(err => reject())
-  //       .then(tokenFromStorage => {
-  //         if (!tokenFromStorage) {
-  //           reject();
-  //           return;
-  //         }
-  //         dispatch(authSetToken(tokenFromStorage));
-  //         resolve(tokenFromStorage);
-  //       });
-  //   } else {
-  //     resolve(token);
-  //   }
-  // });
+  const promise = new Promise((resolve, reject) => {
+    const token = getState().auth.token;
+    if (!token) {
+      AsyncStorage.getItem('jwtToken')
+        .catch(err => reject())
+        .then(tokenFromStorage => {
+          if (!tokenFromStorage) {
+            reject();
+            return;
+          }
+          dispatch(authSetToken(tokenFromStorage));
+          resolve(tokenFromStorage);
+        });
+    } else {
+      resolve(token);
+    }
+  });
 };
 
 export const authAutoSignIn = () => dispatch => {
