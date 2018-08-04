@@ -22,9 +22,7 @@ class AuthScreen extends React.Component<AuthScreenProps, AuthScreenState> {
     authMode: 'login'
   };
 
-  public componentDidMount() {
-    this.props.authAutoSignIn();
-  }
+  public componentDidMount = () => this.props.authAutoSignIn();
 
   public switchAuthModeHandler = () => {
     this.setState(prevState => {

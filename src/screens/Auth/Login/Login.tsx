@@ -20,6 +20,10 @@ interface LoginState {
 interface LoginProps {
   loginUser: (userData: object, startMainTabs: () => void) => void;
   toggleRegister: () => void;
+  errors: {
+    email?: string;
+    password?: string;
+  };
 }
 
 class Login extends React.Component<LoginProps, LoginState> {
@@ -32,9 +36,9 @@ class Login extends React.Component<LoginProps, LoginState> {
     }
   };
 
-  public componentWillReceiveProps(nextProps: any) {
-    if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
+  public componentDidUpdate(prevState: any) {
+    if (prevState.errors !== this.props.errors) {
+      this.setState({ errors: this.props.errors });
     }
   }
 

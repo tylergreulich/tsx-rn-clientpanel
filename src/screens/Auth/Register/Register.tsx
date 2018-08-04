@@ -26,6 +26,12 @@ interface RegisterState {
 interface RegisterProps {
   registerUser: (userData: object) => void;
   toggleLogin: () => void;
+  errors: {
+    email: string;
+    username: string;
+    password: string;
+    confirmPassword: string;
+  };
 }
 
 class Register extends React.Component<RegisterProps, RegisterState> {
@@ -42,9 +48,9 @@ class Register extends React.Component<RegisterProps, RegisterState> {
     }
   };
 
-  public componentWillReceiveProps(nextProps: any) {
-    if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
+  public componentDidUpdate(prevState: any) {
+    if (prevState.errors !== this.props.errors) {
+      this.setState({ errors: this.props.errors });
     }
   }
 
