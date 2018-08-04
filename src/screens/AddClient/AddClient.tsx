@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Container, Content, Text } from 'native-base';
 
+import { connect } from 'react-redux';
+
 class AddClientScreen extends React.Component {
   public render() {
     return (
@@ -11,4 +13,11 @@ class AddClientScreen extends React.Component {
   }
 }
 
-export default AddClientScreen;
+const mapStateToProps = (state: any) => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(AddClientScreen);

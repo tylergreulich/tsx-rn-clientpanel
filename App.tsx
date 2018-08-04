@@ -34,6 +34,7 @@ Navigation.registerComponent(
   store,
   Provider
 );
+
 Navigation.registerComponent(
   'clientpanel.AddClientScreen',
   () => AddClientScreen,

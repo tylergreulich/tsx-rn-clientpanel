@@ -10,29 +10,10 @@ import { registerUser } from '../../../../store/actions/authActions';
 
 import startMainTabs from '../MainTabs/startMainTabs';
 
-interface RegisterState {
-  email: string;
-  username: string;
-  password: string;
-  confirmPassword: string;
-  errors: {
-    email: string | null;
-    username: string | null;
-    password: string | null;
-    confirmPassword: string | null;
-  };
-}
-
-interface RegisterProps {
-  registerUser: (userData: object) => void;
-  toggleLogin: () => void;
-  errors: {
-    email: string;
-    username: string;
-    password: string;
-    confirmPassword: string;
-  };
-}
+import {
+  RegisterProps,
+  RegisterState
+} from '../../../../interfaces/Register/register.interface';
 
 class Register extends React.Component<RegisterProps, RegisterState> {
   state: RegisterState = {

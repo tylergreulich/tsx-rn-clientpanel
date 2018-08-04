@@ -8,23 +8,10 @@ import Input from '../../../Input/Input';
 import { connect } from 'react-redux';
 import { loginUser } from '../../../../store/actions/authActions';
 
-interface LoginState {
-  email: string;
-  password: string;
-  errors: {
-    email?: string | null;
-    password?: string | null;
-  };
-}
-
-interface LoginProps {
-  loginUser: (userData: object, startMainTabs: () => void) => void;
-  toggleRegister: () => void;
-  errors: {
-    email?: string;
-    password?: string;
-  };
-}
+import {
+  LoginProps,
+  LoginState
+} from '../../../../interfaces/Login/login.interface';
 
 class Login extends React.Component<LoginProps, LoginState> {
   state: LoginState = {
