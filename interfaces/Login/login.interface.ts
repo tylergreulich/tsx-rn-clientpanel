@@ -8,8 +8,8 @@ export interface LoginState {
 }
 
 export interface LoginProps {
-  loginUser: (userData: object, startMainTabs: () => void) => void;
-  toggleRegister: () => void;
+  loginUser: (userData: object, startMainTabs: () => void) => any;
+  toggleRegister: () => any;
   errors: {
     email?: string;
     password?: string;

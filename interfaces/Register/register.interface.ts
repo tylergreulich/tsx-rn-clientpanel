@@ -12,8 +12,8 @@ export interface RegisterState {
 }
 
 export interface RegisterProps {
-  registerUser: (userData: object) => void;
-  toggleLogin: () => void;
+  registerUser: (userData: object) => any;
+  toggleLogin: () => any;
   errors: {
     email: string;
     username: string;

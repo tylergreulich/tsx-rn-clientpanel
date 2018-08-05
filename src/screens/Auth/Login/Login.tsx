@@ -13,6 +13,8 @@ import {
   LoginState
 } from '../../../../interfaces/Login/login.interface';
 
+import { AppState } from '../../../../store/typedStore/rootReducer';
+
 class Login extends React.Component<LoginProps, LoginState> {
   state: LoginState = {
     email: '',
@@ -100,7 +102,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: AppState) => ({
   errors: state.errors
 });
 

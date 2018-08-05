@@ -9,7 +9,7 @@ import store from './store/store';
 import jwt_decode from 'jwt-decode';
 import { AsyncStorage } from 'react-native';
 // import setAuthToken from './utilities/setAuthToken';
-import { setCurrentUser, logoutUser } from './store/actions/authActions';
+import { logoutUser } from './store/actions/authActions';
 
 // if (AsyncStorage.getItem(jwtToken)) {
 //   setAuthToken(AsyncStorage.jwtToken);

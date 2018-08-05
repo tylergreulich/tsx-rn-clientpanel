@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { StyleSheet } from 'react-native';
 import { Item, Input, InputGroup } from 'native-base';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -18,15 +19,22 @@ export default (props: InputProps) => (
         placeholder={props.placeholder}
         value={props.value}
         onChangeText={props.onChangeText}
-        style={{ marginTop: 10 }}
+        style={styles.inputStyles}
       />
       {props.error ? (
-        <Icon
-          name="error-outline"
-          size={22.5}
-          style={{ color: 'red', opacity: 1, marginRight: 10 }}
-        />
+        <Icon name="error-outline" size={22.5} style={styles.iconStyles} />
       ) : null}
     </InputGroup>
   </Item>
 );
+
+const styles = StyleSheet.create({
+  inputStyles: {
+    marginTop: 10
+  },
+  iconStyles: {
+    color: 'red',
+    opacity: 1,
+    marginRight: 10
+  }
+});
