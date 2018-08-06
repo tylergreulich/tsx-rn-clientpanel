@@ -6,9 +6,9 @@ import { Container } from 'native-base';
 import Register from './Register/Register';
 import Login from './Login/Login';
 
-import { authAutoSignIn } from '../../../store/actions/authActions';
+// import { authAutoSignIn } from '../../../store/actions/authActions';
 
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
 interface AuthScreenState {
   authMode: string;
@@ -23,7 +23,7 @@ class AuthScreen extends React.Component<AuthScreenProps, AuthScreenState> {
     authMode: 'login'
   };
 
-  public componentDidMount = () => this.props.authAutoSignIn();
+  // public componentDidMount = () => this.props.authAutoSignIn();
 
   public switchAuthModeHandler = () => {
     this.setState(prevState => ({
@@ -32,17 +32,21 @@ class AuthScreen extends React.Component<AuthScreenProps, AuthScreenState> {
   };
 
   public render() {
-    let authScreen = <Login toggleRegister={this.switchAuthModeHandler} />;
+    let authScreen;
 
     if (this.state.authMode === 'register') {
       authScreen = <Register toggleLogin={this.switchAuthModeHandler} />;
+    } else {
+      authScreen = <Login toggleRegister={this.switchAuthModeHandler} />;
     }
 
     return <Container>{authScreen}</Container>;
   }
 }
 
-export default connect(
-  null,
-  { authAutoSignIn }
-)(AuthScreen);
+// export default connect(
+//   null,
+//   null
+// )(AuthScreen);
+
+export default AuthScreen;

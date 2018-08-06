@@ -13,8 +13,6 @@ import {
   LoginState
 } from '../../../../interfaces/Login/login.interface';
 
-import { AppState } from '../../../../store/typedStore/rootReducer';
-
 class Login extends React.Component<LoginProps, LoginState> {
   state: LoginState = {
     email: '',
@@ -24,6 +22,7 @@ class Login extends React.Component<LoginProps, LoginState> {
       password: null
     }
   };
+
 
   public componentDidUpdate(prevState: any) {
     if (prevState.errors !== this.props.errors) {
@@ -102,7 +101,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = (state: AppState) => ({
+const mapStateToProps = (state: any) => ({
   errors: state.errors
 });
 

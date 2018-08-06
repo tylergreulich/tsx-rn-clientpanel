@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 import { Container, Content, Text, Button, Form } from 'native-base';
 
 import Input from '../../../Input/Input';
-import startMainTabs from '../MainTabs/startMainTabs';
+import startMainTabs from '../../MainTabs/startMainTabs';
 
 import { connect } from 'react-redux';
 import { registerUser } from '../../../../store/actions/authActions';

@@ -48,7 +48,6 @@ export const getAuthToken = () => (dispatch, getState) => {
     const token = getState().auth.token;
     if (!token) {
       AsyncStorage.getItem('jwtToken')
-        .catch(err => reject())
         .then(tokenFromStorage => {
           if (!tokenFromStorage) {
             reject();
@@ -56,7 +55,8 @@ export const getAuthToken = () => (dispatch, getState) => {
           }
           dispatch(authSetToken(tokenFromStorage));
           resolve(tokenFromStorage);
-        });
+        })
+        .catch(err => reject());
     } else {
       resolve(token);
     }
@@ -64,9 +64,9 @@ export const getAuthToken = () => (dispatch, getState) => {
 };
 
 export const authAutoSignIn = () => dispatch => {
-  dispatch(getAuthToken())
-    .then(token => {
-      startMainTabs();
-    })
-    .catch(err => alert('Failed to fetch token'));
+  // dispatch(getAuthToken())
+  //   .then(token => {
+  //     startMainTabs();
+  //   })
+  //   .catch(err => alert('Failed to fetch token'));
 };

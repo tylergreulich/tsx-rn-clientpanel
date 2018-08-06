@@ -1,6 +1,7 @@
 import React from 'react';
 import { AppRegistry } from 'react-native';
 import App from './App';
+// import Test from './Test';
 
 import { Provider } from 'react-redux';
 
@@ -12,4 +13,4 @@ const Root = () => (
   </Provider>
 );
 
-AppRegistry.registerComponent('tsxrnclientpanel', () => Root);
+AppRegistry.registerComponent('clientpanelv2', () => Root);
